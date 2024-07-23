@@ -1,20 +1,17 @@
 {
   "name": "easy-email",
   "scripts": {
-    "install-all": "lerna exec -- pnpm install && cd demo && pnpm install",
-    "vercel-install": "lerna exec -- pnpm install && cd demo && pnpm install",
-    "build": "pnpm run build:core && pnpm run build:editor && pnpm run build:extensions",
-    "build:core": "cd packages/easy-email-core && pnpm run build",
-    "build:editor": "cd packages/easy-email-editor && pnpm run build",
-    "build:extensions": "cd packages/easy-email-extensions && pnpm run build",
-    "dev": "cd demo && pnpm run dev",
-    "demo": "cd demo && pnpm run build",
-    "demo2": "cd nextjs-demo && pnpm run build",
+    "build:lib": "pnpm run build:core && pnpm run build:editor && pnpm run build:extensions",
+    "build:core": "pnpm --filter easy-email-core run build",
+    "build:editor": "pnpm --filter easy-email-editor run build",
+    "build:extensions": "pnpm --filter easy-email-extensions run build",
+    "dev": "pnpm --filter easy-email-demo run dev",
+    "build": "pnpm --filter easy-email-demo run build",
     "test": "pnpm run test:core && pnpm run test:extensions",
-    "test:core": "cd packages/easy-email-core && pnpm run test",
-    "test:extensions": "cd packages/easy-email-extensions && pnpm run test",
+    "test:core": "pnpm --filter easy-email-core run test",
+    "test:extensions": "pnpm --filter easy-email-extensions run test",
     "translate": "ts-node scripts/translate.ts",
-    "lint": "lerna exec -- pnpm run format"
+    "lint": "pnpm run format"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",

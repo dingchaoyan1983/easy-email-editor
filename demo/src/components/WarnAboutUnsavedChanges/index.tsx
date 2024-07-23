@@ -42,8 +42,7 @@ export function WarnAboutUnsavedChanges(props: WarnAboutUnsavedChangesProps) {
           props.onBeforeConfirm?.();
 
           event.preventDefault();
-          (event.returnValue as any) =
-            'Changes that you made may not be saved.';
+          (event.returnValue as any) = 'Changes that you made may not be saved.';
         }
       };
 
